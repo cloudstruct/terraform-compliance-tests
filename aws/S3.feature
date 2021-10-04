@@ -13,15 +13,7 @@ Feature: S3 related general feature
 		Then it must have server_side_encryption_configuration
 
 	
-	# check if at least one s3 has logging enabled, because logging will require another s3
-	@noskip_at_line_20
 	Scenario: S3 must have access logging enabled 
 		Given I have aws_s3_bucket defined
-		When it has logging
-
-
-	Scenario: Data stored in S3 has versioning enabled
-		Given I have aws_s3_bucket defined
-		Then it must have versioning
-		Then it must have enabled
-		And its value must be true
+		When its acl is not "log-delivery-write"
+		Then it must have logging
