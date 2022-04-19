@@ -10,10 +10,9 @@ Feature: S3 related general feature
 
 	Scenario: Data must be encrypted at rest
 		Given I have aws_s3_bucket defined
-		Then it must have server_side_encryption_configuration
+		Then it must have aws_s3_bucket_server_side_encryption_configuration
 
 	
 	Scenario: S3 must have access logging enabled 
 		Given I have aws_s3_bucket defined
-		When its acl is not "log-delivery-write"
-		Then it must have logging
+		Then it must have aws_s3_bucket_logging
